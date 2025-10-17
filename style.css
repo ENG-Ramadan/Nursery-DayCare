@@ -1,0 +1,349 @@
+/* style.css - Pastel, calm design with light animations */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap');
+
+:root {
+  --bg: #fffaf3;
+  --card: #ffffff;
+  --accent: #cce7ff;
+  --muted: #f6eaf2;
+  --primary: #9fc5e8;
+  /* pastel blue */
+  --secondary: #ffd9e0;
+  /* pastel pink */
+  --beige: #fff3e0;
+  --text: #333;
+  --accent-dark: #7fb0d6;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, #fbf7f2 100%), radial-gradient(circle at 10% 10%, rgba(159, 197, 232, 0.08), transparent 10%), radial-gradient(circle at 90% 80%, rgba(255, 217, 224, 0.06), transparent 10%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+}
+
+/* subtle background playful SVG pattern */
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><g fill='%23f7f3ff' opacity='0.6'><circle cx='50' cy='40' r='30'/><circle cx='150' cy='120' r='40'/><circle cx='500' cy='60' r='28'/><circle cx='420' cy='200' r='34'/></g><g fill='%23fff5e6' opacity='0.5'><rect x='260' y='10' width='140' height='40' rx='8'/><rect x='30' y='260' width='120' height='32' rx='8'/></g></svg>");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 60%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(31, 45, 61, 0.06);
+  flex-shrink: 0;
+}
+
+.logo svg {
+  width: 34px;
+  height: 34px;
+  transform: translateY(-2px)
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background .25s, transform .15s;
+}
+
+.nav a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px)
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  padding: 9px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(159, 197, 232, 0.18);
+}
+
+.btn.secondary {
+  background: var(--secondary);
+  color: #6b2f3a;
+  box-shadow: 0 6px 18px rgba(255, 217, 224, 0.14);
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 30px 12px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+  border-radius: 14px;
+  margin-top: 12px;
+  box-shadow: 0 8px 30px rgba(31, 45, 61, 0.04);
+  overflow: hidden;
+  animation: fadeUp .6s ease both;
+}
+
+.hero-text {
+  flex: 1
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 28px;
+  color: var(--beige);
+  font-weight: 800
+}
+
+.hero p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.65)
+}
+
+.hero-illustration {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(31, 45, 61, 0.04);
+  animation: fadeUp .55s ease both;
+}
+
+/* Features grid */
+.grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  flex: 1 1 220px;
+  min-width: 220px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  transition: transform .25s, box-shadow .25s;
+}
+
+.feature:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(31, 45, 61, 0.06)
+}
+
+.feature h3 {
+  margin: 0 0 8px;
+  font-size: 16px
+}
+
+.feature p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+/* Forms */
+.form-wrap {
+  max-width: 520px;
+  margin: 20px auto
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+label {
+  font-weight: 600;
+  font-size: 13px
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, #fff, #fbfbfb);
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center
+}
+
+.small {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+/* Footer */
+.footer {
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.45));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  background: transparent;
+  font-weight: 700
+}
+
+.copy {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+/* tiny toast */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #2b2b2b;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+/* Utilities */
+.center {
+  text-align: center
+}
+
+.mt20 {
+  margin-top: 20px
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+@media (max-width:800px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .nav {
+    display: none
+  }
+
+  .header {
+    padding: 12px
+  }
+}

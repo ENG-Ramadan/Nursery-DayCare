@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>حضانة براعم مودرن - الرئيسية</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tablestyle.css">
+  </head>
+  <body>
+    <div class="bg-pattern" aria-hidden="true"></div>
+    <div class="container">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <!-- flower icon -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <circle cx="32" cy="32" r="6" fill="#ffd9e0" />
+              <path
+                d="M32 8c5 6 12 7 16 3s3-11-3-16c-6 5-13 4-13 4s-7 1-13-4C13 0 11 6 15 10s11 3 16-3z"
+                fill="#fff" />
+              <g fill="#ffe2b3" opacity="0.9">
+                <ellipse cx="20" cy="28" rx="8" ry="12" />
+                <ellipse cx="44" cy="28" rx="8" ry="12" />
+                <ellipse cx="32" cy="44" rx="12" ry="8" />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="title">حضانة براعم مودرن</div>
+            <div class="subtitle">رعاية، تعلم، ومرح بأمان</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="القائمة الرئيسية">
+          <a href="index.html">الرئيسية</a>
+          <a href="register.html">تسجيل طفل</a>
+          <a class="btn secondary" href="reservations.html">حجوزات اليوم</a>
+          <a class="btn" href="login.html">تسجيل الدخول</a>
+        </nav>
+      </header>
+
+      <main>
+
+        <section>
+          <h2>قائمة الأطفال المسجلين</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>اسم الطفل</th>
+                <th>اسم ولي الأمر</th>
+                <th>رقم الهاتف</th>
+                <th>اسم المستلم</th>
+                <th>وقت الدخول</th>
+                <th>إجراء</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>عمر خالد</td>
+                <td>خالد محمود</td>
+                <td>01012345678</td>
+                <td>سارة محمد</td>
+                <td class="entry-time">08:15</td>
+                <td><button class="btn-leave">مغادرة</button></td>
+              </tr>
+              <tr>
+                <td>ليلى أحمد</td>
+                <td>أحمد سمير</td>
+                <td>01098765432</td>
+                <td>مروى علي</td>
+                <td class="entry-time">09:00</td>
+                <td><button class="btn-leave">مغادرة</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Popup -->
+        <div class="popup" id="leavePopup">
+          <div class="popup-content">
+            <h3>تفاصيل مغادرة الطفل</h3>
+            <p><strong>الاسم:</strong> <span id="childName"></span></p>
+            <p><strong>وقت الدخول:</strong> <span id="entryTime"></span></p>
+            <p><strong>وقت الخروج:</strong> <span id="exitTime"></span></p>
+            <p><strong>المدة داخل الحضانة:</strong> <span id="duration"></span></p>
+            <button onclick="closePopup()">إغلاق</button>
+          </div>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <div>
+          <div class="title">حضانة براعم مودرن</div>
+          <div class="copy">© 2025 - جميع الحقوق محفوظة</div>
+        </div>
+        <div class="socials">
+          <a href="https://wa.me/201098765432" target="_blank"
+            rel="noopener">واتساب</a>
+          <a href="mailto:info@example.com">البريد الإلكتروني</a>
+          <a href="https://www.facebook.com" target="_blank"
+            rel="noopener">فيسبوك</a>
+          <a href="https://www.instagram.com" target="_blank"
+            rel="noopener">إنستجرام</a>
+          <a href="https://www.google.com/maps" target="_blank"
+            rel="noopener">الخريطة</a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+  <script>
+    const buttons = document.querySelectorAll('.btn-leave');
+    const popup = document.getElementById('leavePopup');
+    const childName = document.getElementById('childName');
+    const entryTime = document.getElementById('entryTime');
+    const exitTime = document.getElementById('exitTime');
+    const duration = document.getElementById('duration');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        const row = e.target.closest('tr');
+        const name = row.children[0].textContent;
+        const entry = row.querySelector('.entry-time').textContent;
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const exit = `${hours}:${minutes}`;
+
+        const [h1, m1] = entry.split(':').map(Number);
+        const [h2, m2] = [hours, minutes].map(Number);
+        let total = (h2 + m2/60) - (h1 + m1/60);
+        if (total < 0) total += 24; // في حالة تعدي منتصف الليل
+        const durationStr = total.toFixed(2) + ' ساعة';
+
+        childName.textContent = name;
+        entryTime.textContent = entry;
+        exitTime.textContent = exit;
+        duration.textContent = durationStr;
+
+        popup.style.display = 'flex';
+      });
+    });
+
+    function closePopup(){
+      popup.style.display = 'none';
+    }
+  </script>
+</html>
