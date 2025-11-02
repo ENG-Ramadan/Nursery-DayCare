@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap');
 
 :root {
-  --bg: #fffaf3;
-  --card: #ffffff;
-  --accent: #cce7ff;
-  --muted: #f6eaf2;
-  --primary: #9fc5e8;
+  --bg: #2c38438a;
+  --card: #1150938a;
+  --accent: #9cbfe78a;
+  --muted: #0083f68a;
+  --primary: rgb(10, 77, 92);
   /* pastel blue */
-  --secondary: #ffd9e0;
+  --secondary: rgb(10, 77, 92);
   /* pastel pink */
-  --beige: #fff3e0;
-  --text: #333;
-  --accent-dark: #7fb0d6;
+  --beige: #f7f8fa;
+  --text: #000000;
+  --accent-dark: #9cc2e78a;
 }
 
 * {
@@ -95,7 +95,7 @@ body {
 }
 
 .subtitle {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.55);
 }
 
@@ -132,7 +132,7 @@ body {
 
 .btn.secondary {
   background: var(--secondary);
-  color: #6b2f3a;
+  color: #000000;
   box-shadow: 0 6px 18px rgba(255, 217, 224, 0.14);
 }
 

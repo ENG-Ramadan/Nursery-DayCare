@@ -13,7 +13,6 @@
       <header class="header">
         <div class="brand">
           <div class="logo" aria-hidden="true">
-            <!-- flower -->
             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true">
               <circle cx="32" cy="32" r="6" fill="#ffd9e0" />
@@ -81,5 +80,18 @@ function fakeAuth(e){
 }
  
 </script>
+<script>
+  // تحديد الزر
+  const loginBtn = document.getElementById('loginBtn');
+
+  // لما المستخدم يدوس عليه
+  loginBtn.addEventListener('click', function (e) {
+    e.preventDefault(); // يمنع تحديث الصفحة (اختياري)
+    
+    // هنا بتحطه يروح على صفحة تسجيل الطفل
+    window.location.href = "register.html";
+  });
+</script>
+
   </body>
 </html>
